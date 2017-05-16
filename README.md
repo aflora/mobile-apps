@@ -1,26 +1,42 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+### Prerequisites:
+- Node+6
+- Andriod Studio
+- vscode
 
-## How to use this template
-
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/driftyco/ionic2-app-base).
-
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/driftyco/ionic2-app-base).
-
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
+### Ionic CLI:
+1.) run the command line
 ```bash
 $ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
 ```
 
-Then, to run it, cd into `mySideMenu` and run:
-
+2.) change environmental variable "Path" 
 ```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+add C:\Users\SMS-MT04\AppData\Roaming\npm
 ```
 
-Substitute ios for android if not on a Mac.
+3.1) Add platform
+```bash
+ionic cordova platform android
+```
 
+3.2) Build andriod
+```bash
+ionic cordova build android
+```
+
+3.3) Emulate andriod 
+```bash
+ionic cordova emulate  android
+```
+
+4.) for ios
+```bash
+ionic upload *make sure your app has a app link on your account
+download ionic view
+login and test
+```
+
+5.) for browser
+```bash
+ionic serve
+```
