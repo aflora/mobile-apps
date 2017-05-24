@@ -1,18 +1,17 @@
 <ion-header>
-  <ion-navbar primary>
-    <ion-title>teams</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Teams</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
   <ion-list>
-    <button ion-item (click)="itemTapped()">
-        HC Elite
-    </button>
-    <button ion-item (click)="itemTapped()">
-        Team Take Over
-    </button>
+    <ion-item-group *ngFor="let devision of teams">
+      <ion-item-divider color="secondary">{{devision.divisionName}}</ion-item-divider>
+      <button ion-item *ngFor="let team of devision.divisionTeams" (click)="itemTapped($event, team)">
+          {{team.name}}
+      </button>
+    </ion-item-group>
+  </ion-list>
+  <ion-list>
   </ion-list>
 </ion-content>

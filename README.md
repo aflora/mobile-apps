@@ -40,3 +40,11 @@ login and test
 ```bash
 ionic serve
 ```
+
+
+### other technologies used:
+```bash
+ - firebase
+ - rxjs and rxjs/observable
+ - moment
+```
