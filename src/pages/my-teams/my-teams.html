@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
-    <button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+    <button ion-button menuToggle>
+      <ion-icon  name="menu"></ion-icon>
     </button>
     <ion-title>Elite Schedule</ion-title>
   </ion-navbar>
@@ -20,7 +20,9 @@
     </ion-card>
     <ion-card *ngIf="favorites">
       <ion-list>
-          <ion-list-header class="my-teams-header">Followed Teams</ion-list-header>
+          <ion-list-header class="my-teams-header">
+            Followed Teams
+          </ion-list-header>
           <button ion-item *ngFor="let item of favorites" (click)="favoriteTapped($event, item)">
               <ion-icon name="people"></ion-icon>
               {{item.team.name}}
@@ -29,11 +31,10 @@
       </ion-list>  
       <ion-card-content>
             <p>Top Follow more teams, select a tournament, then you can follow teams from their page.</p>
-      <ion-fab bottom right>
-      <button ion-fab (click)="goToTournaments()">
-            <ion-icon name="search"></ion-icon>
+      <button full ion-button (click)="goToTournaments()">
+        <ion-icon name="search"></ion-icon>
+        Find Tournament  
       </button>
-      </ion-fab>
       </ion-card-content>
     </ion-card>
 

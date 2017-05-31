@@ -9,7 +9,7 @@ import { IonicPage,
 import { GamePage } from '../pages';
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { EliteApi } from '../../shared/shared';
+import { EliteApi, UserSettings } from '../../shared/shared';
 
 @IonicPage()
 @Component({
@@ -30,6 +30,7 @@ export class TeamDetailPage {
       public navCtrl: NavController, 
       public navParams: NavParams, 
       private eliteApi: EliteApi, 
+      private userSettings: UserSettings,
       public alertController: AlertController,
       public toastController: ToastController) {
         this.team = this.navParams.data;
@@ -57,7 +58,8 @@ export class TeamDetailPage {
                 })
                 .value();
     this.allGames = this.games;
-    this.teamStanding = _.find(this.tourneyData.standings, { 'teamId': this.team.id });            
+    this.teamStanding = _.find(this.tourneyData.standings, { 'teamId': this.team.id });         
+    this.userSettings.isFavoriteTeam(this.team.id).then(value => this.isFollowing = value);   
     console.log('ionViewDidLoad TeamDetailPage', this.teamStanding);
   }
 
@@ -89,6 +91,7 @@ export class TeamDetailPage {
           text: "Yes",
           handler: () => {
             this.isFollowing = false;
+            this.userSettings.unfavoriteTeam(this.team);
             let toast = this.toastController.create({
                 message: "You have unfloow this team",
                 duration: 2000,
@@ -103,7 +106,10 @@ export class TeamDetailPage {
       confirm.present();
     } else {
       this.isFollowing = true;
-      // TODO: persis data
+      this.userSettings.favoriteTeam(
+          this.team, 
+          this.tourneyData.tournament.id, 
+          this.tourneyData.tournament.name);
     }
   }
 
@@ -112,6 +118,12 @@ export class TeamDetailPage {
     this.navCtrl.parent.parent.push(GamePage, sourceGame);
   }
 
+  refreshAll(refresher){
+    this.eliteApi.refreshCurrentTourney().subscribe(() => {
+        refresher.complete();
+        this.ionViewDidLoad();
+    });
+  }
   dateChanged() {
     if(this.useDateFilter){
       this.games = _.filter(this.allGames, g => moment(g.time).isSame(this.dateFilter, 'day'));

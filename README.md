@@ -41,6 +41,11 @@ login and test
 ionic serve
 ```
 
+### storage:
+```
+cordova plugin add cordova-sqlite-storage --save
+npm install localforage
+```
 
 ### other technologies used:
 ```bash
