@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { MapPage } from './map';
-
-//import { AgmCoreModule } from '@agm/core';
-import { SebmGoogleMap } from 'angular2-google-maps/core';
-
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -12,7 +9,9 @@ import { SebmGoogleMap } from 'angular2-google-maps/core';
   ],
   imports: [
     IonicPageModule.forChild(MapPage),
-   SebmGoogleMap
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBJspnd0d6Dy2xI6ly1ZFSUvoSE3F-V4ME'
+    })
   ],
   exports: [
     MapPage

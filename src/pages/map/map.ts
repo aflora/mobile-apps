@@ -2,12 +2,7 @@ import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { EliteApi } from '../../shared/shared';
 
-
-// import { GoogleMapsAPIWrapper } from '@agm/core';
-import { SebmGoogleMap } from 'angular2-google-maps/core';
-
 declare var window: any;
-
 
 @Component({
   selector: "gmap",
